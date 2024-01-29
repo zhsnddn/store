@@ -46,4 +46,18 @@ public class UserServiceTests {
         User user = userService.login("zym", "123");
         System.out.println(user);
     }
+
+    @Test
+    public void getByUid() {
+        System.out.println(userService.getByUid(15));
+    }
+
+    @Test
+    public void changeInfo() {
+        User user = new User();
+        user.setPhone("123445");
+        user.setEmail("200@qq.com");
+        user.setGender(0);
+        userService.changeInfo(15,"管理员", user);
+    }
 }

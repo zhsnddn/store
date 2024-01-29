@@ -130,6 +130,44 @@ public class UserServiceImpl implements IUserService {
         }
     }
 
+    @Override
+    public User getByUid(Integer uid) {
+        //查询用户是否存在
+        User result = userMapper.findByUid(uid);
+        if (result == null || result.getIsDelete() == 1) {
+            throw new UsernameNotFoundException("用户数据不存在");
+        }
+
+        //可以直接返回result给控制层,但是太臃肿了
+        User user = new User();
+        user.setUsername(result.getUsername());
+        user.setPhone(result.getPhone());
+        user.setEmail(result.getEmail());
+        user.setGender(result.getGender());
+
+        return user;
+    }
+
+    /**
+     *User对象中的数据只有phone,email,gender,username,因为springboot进行依赖
+     * 注入的时候只注入表单中数据的值,所以需要手动将uid封装到user中
+     */
+    @Override
+    public void changeInfo(Integer uid, String username, User user) {
+        User result = userMapper.findByUid(uid);
+        if(result == null && result.getIsDelete() == 1) {
+            throw new UsernameNotFoundException("用户数据不存在");
+        }
+        user.setUid(uid);
+        user.setModifiedUser(username);
+        user.setModifiedTime(new Date());
+
+        Integer rows = userMapper.updateInfoByUid(user);
+        if(rows != 1) {
+            throw new UpdateException("更新数据时产生异常");
+        }
+    }
+
 
     private String getMD5Password(String password,String salt) {
         for (int i = 0; i < 3; i++) {

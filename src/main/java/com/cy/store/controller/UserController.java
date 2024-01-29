@@ -50,5 +50,22 @@ public class UserController extends BaseController {
         return new JsonResult<>(OK);
     }
 
+    @RequestMapping("get_by_uid")
+    public JsonResult<User> getByUid(HttpSession session) {
+        User data = userService.getByUid(getuidFormSession(session));
+        return new JsonResult<User>(OK,data);
+    }
+
+    @RequestMapping("change_info")
+    public JsonResult<Void> changeInfo(User user,HttpSession session) {
+        //user对象中有四部分的数据:username,phone,email,gender
+        //控制层给业务层传递uid,并在业务层通过user.setUid(uid);将uid封装到user中
+        Integer uid = getuidFormSession(session);
+        String username = getUsernameFromSesssion(session);
+        userService.changeInfo(uid, username, user);
+        return new JsonResult<>(OK);
+    }
+
+
 
 }
