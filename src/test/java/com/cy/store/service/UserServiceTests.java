@@ -40,4 +40,10 @@ public class UserServiceTests {
             System.out.println(e.getMessage());
         }
     }
+
+    @Test
+    public void login() {
+        User user = userService.login("zym", "123");
+        System.out.println(user);
+    }
 }

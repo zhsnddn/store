@@ -2,6 +2,8 @@ package com.cy.store.service;
 
 import com.cy.store.entity.User;
 
+import javax.security.sasl.SaslServer;
+
 /**用户模块业务层接口*/
 public interface IUserService {
     /**
@@ -10,6 +12,11 @@ public interface IUserService {
      */
     void reg(User user);
 
-    void changePassword(int i, String 管理员, String number, String number1);
+    /**
+     * @param username 用户名
+     * @param password 用户密码
+     * @return 当前匹配的用户数据，如果没有则返回null值
+     */
+    User login(String username, String password);
 }
 

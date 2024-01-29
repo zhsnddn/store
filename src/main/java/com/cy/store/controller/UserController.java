@@ -23,4 +23,10 @@ public class UserController extends BaseController {
         return new JsonResult<>(OK);
     }
 
+    @RequestMapping("login")
+    public JsonResult<User> login(String username, String password) {
+        User data = userService.login(username, password);
+        return new JsonResult<User>(OK, data);
+    }
+
 }
