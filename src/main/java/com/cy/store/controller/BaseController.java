@@ -38,4 +38,22 @@ public class BaseController {
         }
         return result;
     }
+
+    /**
+     * 获取session对象中uid
+     * @param session session 对象
+     * @return 当前登录用户uid的值
+     */
+    protected final Integer getuidFormSession(HttpSession session) {
+        return Integer.valueOf(session.getAttribute("uid").toString());
+    }
+
+    /**
+     * 获取session对象中username
+     * @param session session 对象
+     * @return 当前登录用户username的值
+     */
+    protected final String getUsernameFromSesssion(HttpSession session) {
+        return session.getAttribute("username").toString();
+    }
 }
