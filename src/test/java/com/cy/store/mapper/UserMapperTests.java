@@ -39,4 +39,14 @@ public class UserMapperTests {
         User user = userMapper.findByUsername("timi");
         System.out.println(user);
     }
+
+    @Test
+    public void updatePasswordByUid() {
+        userMapper.updatePasswordByUid(20, "123","admin", new Date());
+    }
+
+    @Test
+    public void findByUid() {
+        System.out.println(userMapper.findByUid(20));
+    }
 }

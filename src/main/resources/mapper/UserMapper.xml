@@ -49,7 +49,7 @@
 
     <update id="updatePasswordByUid">
         update t_user set
-          `password`=#{password},
+          password=#{password},
           modified_user=#{modifiedUser},
           modified_time=#{modifiedTime}
         where uid=#{uid}
