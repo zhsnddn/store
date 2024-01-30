@@ -39,5 +39,17 @@ public interface IUserService {
      */
     void changeInfo(Integer uid, String username, User user);
 
+    /**
+     * 修改用户的头像
+     * @param uid 用户uid
+     * @param avatar 用户头像的路径
+     * @param username 用户名称
+     */
+    void changeAvatar(Integer uid,
+                      String avatar,
+                      String username);//业务层一般叫username而不叫modifiedUser,因
+    // 为业务层并没有直接和数据库关联
+
+
 }
 

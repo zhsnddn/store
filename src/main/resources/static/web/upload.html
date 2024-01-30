@@ -254,7 +254,7 @@
                     contentType: false,//提交数据的形式,关闭默认提交数据的形式
                     dataType: "JSON",
                     success: function (json) {
-                        if (json.state == 200) {
+                        if (json.state === 200) {
                             alert("头像修改成功")
                             //将服务器端返回的头像地址设置到img标签的src属性上
                             //attr(属性,属性值)用来给某个属性设值

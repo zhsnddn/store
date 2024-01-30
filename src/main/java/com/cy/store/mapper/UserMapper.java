@@ -53,7 +53,7 @@ public interface UserMapper {
 
     /**
      * 根据用户uid修改用户的头像
-     * @param iddddd
+     * @param uid
      * @param avatar
      * @param modifiedUser
      * @param modifiedTime
@@ -64,8 +64,8 @@ public interface UserMapper {
      * 当SQL语句的占位符和映射的接口方法参数名不一致时,需要将某个参数强行注入到某个
      * 占位符变量上时,可以使用@Param这个注解来标注映射的关系
      * */
-    Integer updateAvatarByUid(@Param("uid") Integer iddddd,//@Param("参数名")注解中的参数名需要和sql语句中
-                              //的#{参数名}的参数名保持一致.该处表示iddddd中的变量值要注入到sql语句的uid中
+    Integer updateAvatarByUid(@Param("uid") Integer uid,//@Param("参数名")注解中的参数名需要和sql语句中
+                              //的#{参数名}的参数名保持一致.该处表示uid中的变量值要注入到sql语句的uid中
                               String avatar,
                               String modifiedUser,
                               Date modifiedTime);

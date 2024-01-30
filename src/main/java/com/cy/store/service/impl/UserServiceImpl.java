@@ -168,6 +168,20 @@ public class UserServiceImpl implements IUserService {
         }
     }
 
+    @Override
+    public void changeAvatar(Integer uid, String avatar, String username) {
+        //查询当前的用户数据是否存在
+        User result = userMapper.findByUid(uid);
+        if (result == null || result.getIsDelete() == 1) {
+            throw new UsernameNotFoundException("用户数据不存在");
+        }
+        Integer rows = userMapper.updateAvatarByUid(uid, avatar, username, new Date());
+        if (rows!=1) {
+            throw new UpdateException("更新用户头像时产生未知异常");
+        }
+    }
+
+
 
     private String getMD5Password(String password,String salt) {
         for (int i = 0; i < 3; i++) {

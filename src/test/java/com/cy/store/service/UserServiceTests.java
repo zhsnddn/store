@@ -60,4 +60,10 @@ public class UserServiceTests {
         user.setGender(0);
         userService.changeInfo(15,"管理员", user);
     }
+
+    @Test
+    public void changeAvatar() {
+        userService.changeAvatar(15,"222","mmm");
+    }
+
 }
